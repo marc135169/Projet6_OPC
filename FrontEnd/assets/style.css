@@ -84,12 +84,16 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
-nav ul {
+nav ul {	
 	display: flex;
 	align-items: center;
-	list-style-type: none;
-
+	list-style-type: none;	
+	a{
+		text-decoration: none;
+		color: black;
+	}	
 }
+
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
@@ -121,10 +125,26 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2 {
-	text-align: center;
+
+#portfolio div:first-child{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin-bottom: 1em;
+	div {
+		margin-left: 1rem;
+		button {
+			border: none;
+			background: none;
+			font: inherit;
+		}
+	}
 }
+
+#portfolio h2 {	
+	text-align: center;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -161,16 +181,18 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 input[type="submit"]{
-	font-family: 'Syne';
+	font-family: 'Syne', serif;
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
@@ -185,4 +207,82 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
+
+/** Section Login */
+.login{
+	display: none;	
+	flex-direction: column;
+	align-items: center;	
+	height: 65vh;
+	margin-top: 150px;
+	
+	&.login form{
+		display: flex;
+		flex-direction: column;		
+		align-items: center;
+		margin-top: 1rem;
+		gap: 1rem;	
+	}
+
+	&.login input{
+		margin-top: 0.2rem;
+		margin-bottom: 1rem;
+		width: 379px;
+		height: 51px;
+		border: none;
+		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
+	}
+
+	
+	button:nth-of-type(1){
+		background-color: #1D6154;
+		border: 1px solid #1D6154;
+		font-family: 'Syne', serif;
+		font-weight: 700;
+		font-size: 14px;
+		height: 36px;
+		width: 179px;
+		border-radius: 30px;
+		color: white;
+	}
+
+
+	button:nth-of-type(2) {		
+		border: none;
+		font-weight: 500;
+		font-size: 14px;
+		text-decoration: underline;
+		background-color: white;
+	}
+	
+}
+
+
+
+/** Button Filter*/
+.filters{
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	gap: 0.5rem;
+	.filters-btn{
+		font-family: 'Syne', serif;
+		font-weight: 700;
+		font-size: 16px;
+		text-decoration: none;
+		background-color: white;
+		border: 1px solid #1D6154;
+		padding: 0.5rem;
+		border-radius: 30px;
+		color: #1D6154;	
+		&:hover {
+			background-color: #1D6154;
+			color: white;
+		}
+	}
+	
+}
+
+
 

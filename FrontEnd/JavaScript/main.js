@@ -1,15 +1,30 @@
-// Get all Works from API
-try {
-    const responseWorks = await fetch('http://localhost:5678/api/works');    
-    const works = await responseWorks.json(); 
-    console.log(works); 
-    
-    const responseCategories = await fetch('http://localhost:5678/api/categories');
-    const categories = await responseCategories.json();
-    console.log(categories);
-}
-catch (error) {
-    throw new Error(error);
-}
+import {getWorks} from './data.js'
+import {generateGallery} from './DOM/galleryDOM.js'
+import {createFilters} from './DOM/filtersDOM.js'
+import {createEventListener} from './filters.js'
+
+
+getWorks().then((data) => {
+    const { works, categories } = data;
+    console.log('Works:', works);
+    console.log('Categories:', categories);
+    generateGallery(works);
+    createFilters(categories);
+    createEventListener(categories, works);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
