@@ -16,6 +16,7 @@ export function createFilters(categories){
         const btnElement = document.createElement('button');
         btnElement.classList.add('filters-btn');
         btnElement.innerText = category.name;
+        btnElement.id = category.id;
         filtersSection.appendChild(btnElement);
     });
 }
