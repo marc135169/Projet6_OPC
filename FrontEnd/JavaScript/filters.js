@@ -9,9 +9,8 @@ export function createEventListener(categories, works)  {
     console.log('Number of filter\'s buttons:', allFilterBtn.length);
     allFilterBtn.forEach(filterBtn => {
         filterBtn.addEventListener('click', () => {
-            let categoryChooseID = filterBtn.id;           
-            console.log(filterBtn.id);
-            filterByCategory(categoryChooseID,categories, works);
+            let categoryChooseID = filterBtn.id; 
+            filterByCategory(filterBtn.id,categories, works);
         });
     });
 }
