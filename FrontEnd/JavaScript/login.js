@@ -5,9 +5,20 @@ const loginSectionElement = document.querySelector('.login');
 const filtersSectionElement = document.querySelector('.filters');
 const mainElement = document.querySelector('main');
 
-loginNavElement.addEventListener('click', () => {
-    mainElement.style.display = 'none';
-    loginSectionElement.style.display = 'flex';
+
+loginNavElement.addEventListener('click', () => {  
+    console.log(loginNavElement.innerText);
+    if (loginNavElement.innerText === 'login') {
+        loginNavElement.innerText = 'logout'
+        mainElement.style.display = 'none';
+        loginSectionElement.style.display = 'flex';
+    }else if(loginNavElement.innerText === 'logout') {
+        loginNavElement.innerText = 'login'
+        loginSectionElement.style.display = 'none';        
+        mainElement.style.display = 'block';
+        filtersSectionElement.style.display = 'flex';
+        changeLoginLogout();
+    }
 });
 
 document.querySelector('.login').addEventListener('submit', async (e) => {
@@ -27,7 +38,6 @@ document.querySelector('.login').addEventListener('submit', async (e) => {
                 password: password
             })
         });
-
         
         if (response.ok) {
             const data = await response.json();
@@ -41,9 +51,11 @@ document.querySelector('.login').addEventListener('submit', async (e) => {
             
         } else {
             console.error('connexion error');           
-        }
-        
-        
+        }    
     });
 
 
+function changeLoginLogout(){
+    const divButtonElement = document.querySelector('.buttonDivModifier');
+    divButtonElement.innerHTML = '';
+}
