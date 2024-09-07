@@ -1,20 +1,33 @@
+import {addDataToModal} from "./DOM/modalData.js";
 
-export async function deleteWork(item) {
+export function deleteWork(item) {
+    const token = sessionStorage.getItem('authToken');
+    let itemID = +item.id;
+    console.log(itemID);
+
+    //demande au mentor s'il y a vraiment l'utilité
+    if (!token) {
+        console.error('Token non trouvé');
+        return;
+    }
+
     
-    const response = await fetch(`http://localhost:8080/api/works/${item.id}`, {
-
+    fetch(`http://localhost:5678/api/works/${itemID}`, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-        
+            "Authorization": `Bearer ${token}`,
+            "accept": "*/*"
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Élément ${itemID} supprimé avec succès.`);
+                addDataToModal();
+            } else {
+                throw new Error('Erreur lors de la suppression');
+            }
         })
-    });
-    if (response.ok) {
-        console.log(response);
-    }
-    
-    
-    
+        .catch(error => {
+            console.error("Erreur :", error);
+        });
 }
