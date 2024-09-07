@@ -3,7 +3,6 @@ import {changeLoginLogout} from "./DOM/updateUI.js";
 import {displayElement} from "./DOM/updateUI.js";
 import {hideElement} from "./DOM/updateUI.js";
 
-const loginNavElement = document.querySelector('.site_login');
 const loginSectionElement = document.querySelector('.login');
 const filtersSectionElement = document.querySelector('.filters');
 const mainElement = document.querySelector('main');
