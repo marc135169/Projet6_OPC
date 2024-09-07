@@ -1,3 +1,5 @@
+import {addDataToModal} from "./modalData.js";
+
 const loginNavElement = document.querySelector('.site_login');
 const loginSectionElement = document.querySelector('.login');
 const filtersSectionElement = document.querySelector('.filters');
@@ -82,6 +84,8 @@ function setListener(element) {
     if (element.className === 'buttonDivModifier') {
     }
     element.addEventListener('click', () => {
+
+        addDataToModal();        
         displayElement(bgModalElement);
     })
 }
@@ -90,10 +94,15 @@ function setListener(element) {
 bgModalElement.addEventListener('click', (event) => {
     if (event.target === bgModalElement) {
         hideElement(bgModalElement);
+        const modalH2Element = document.querySelector('.modal_div_h2');
+        modalH2Element.innerText = 'Galerie Photo';
+        
     }
 })
 
 xElement.addEventListener('click', () => {
     hideElement(bgModalElement);
+    const modalH2Element = document.querySelector('.modal_div_h2');
+    modalH2Element.innerText = 'Galerie Photo';
 })
 
