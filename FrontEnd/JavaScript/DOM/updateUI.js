@@ -1,4 +1,7 @@
-import {addDataToModal} from "./modalData.js";
+import {updateModalData} from "./Modal/modalData.js";
+import {getWorks} from "../DATA/getData.js";
+import {generateGallery} from "./createGallery.js";
+import {createEventListener} from "../filters.js";
 
 const loginNavElement = document.querySelector('.site_login');
 const loginSectionElement = document.querySelector('.login');
@@ -7,7 +10,12 @@ const mainElement = document.querySelector('main');
 const bgModalElement = document.querySelector('.bg_modal');
 const xElement = document.querySelector('.exitX');
 
-
+/**
+ * @author Tetart_Marc
+ * @return void
+ * @description Adds a button to the portfolio H2 element that allows the user to modify the portfolio.
+ * Also adds a listener to the button that calls the UpdateModalData function. 
+ */
 export function addButtonModifier() {
 
     const portfolioH2Element = document.querySelector('#portfolio h2');
@@ -44,17 +52,36 @@ loginNavElement.addEventListener('click', () => {
         displayElement(filtersSectionElement);
 
         changeLoginLogout();
+
+        getWorks().then((data) => {
+            const { works, categories } = data;
+            generateGallery(works);
+            createEventListener(categories, works);
+        });
     }
 });
 
+/**
+ * @author Tetart_Marc
+ * @return void
+ * @description Changes the login and logout text.
+ */
 export function changeLoginLogout() {
     if (loginNavElement.innerText === 'login') {
         loginNavElement.innerText = 'logout';
     } else {
         loginNavElement.innerText = 'login';
+        sessionStorage.removeItem('authToken');        
     }
 }
 
+/**
+ * @author Tetart_Marc
+ * @param elementToDisplay the element to display
+ * @return void
+ * @description Displays the elementToDisplay.
+ * If the elementToDisplay is not found, it logs an error message.
+ */
 export function displayElement(elementToDisplay) {
 
     switch (elementToDisplay) {
@@ -75,17 +102,28 @@ export function displayElement(elementToDisplay) {
     }
 }
 
+/**
+ * @author Tetart_Marc
+ * @param elementToHide
+ * @return void
+ * @description Hides the elementToHide.
+ */
 export function hideElement(elementToHide) {
     elementToHide.style.display = 'none';
 }
 
-
+/**
+ * @author Tetart_Marc
+ * @param element
+ * @return void
+ * @description Adds a click listener to the element. 
+ */
 function setListener(element) {
     if (element.className === 'buttonDivModifier') {
     }
     element.addEventListener('click', () => {
 
-        addDataToModal();        
+        updateModalData();        
         displayElement(bgModalElement);
     })
 }

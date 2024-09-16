@@ -1,4 +1,4 @@
-import {generateGallery} from './DOM/galleryDOM.js'
+import {generateGallery} from './DOM/createGallery.js'
 
 /**
  * @author Tetart_Marc

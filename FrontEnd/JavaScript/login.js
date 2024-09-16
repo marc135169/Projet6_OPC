@@ -35,9 +35,7 @@ document.querySelector('.login').addEventListener('submit', async (e) => {
             hideElement(loginSectionElement);
             hideElement(filtersSectionElement);            
             addButtonModifier();
-            changeLoginLogout();
-            
-            
+            changeLoginLogout();  
             
         } else {
             console.error('connexion error');           
