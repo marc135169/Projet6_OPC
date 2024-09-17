@@ -38,8 +38,10 @@ export function addButtonModifier() {
 
 loginNavElement.addEventListener('click', () => {
     if (loginNavElement.innerText === 'login') {
+        const errorDivElement = document.querySelector('.error-tooltip');
+        hideElement(errorDivElement);
         hideElement(mainElement);
-
+        
         displayElement(loginSectionElement);
 
     } else if (loginNavElement.innerText === 'logout') {
@@ -139,6 +141,8 @@ bgModalElement.addEventListener('click', (event) => {
 })
 
 xElement.addEventListener('click', () => {
+    const backwardElement = document.querySelector('.backward');
+    backwardElement.style.display = 'none';
     hideElement(bgModalElement);
     const modalH2Element = document.querySelector('.modal_div_h2');
     modalH2Element.innerText = 'Galerie Photo';

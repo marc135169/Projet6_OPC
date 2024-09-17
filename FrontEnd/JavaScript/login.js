@@ -8,6 +8,15 @@ const filtersSectionElement = document.querySelector('.filters');
 const mainElement = document.querySelector('main');
 
 
+const loginDivElement = document.querySelector('form');
+const errorTooltip = document.createElement('div');
+errorTooltip.classList.add('error-tooltip');
+errorTooltip.style.display = 'none';
+errorTooltip.style.position = 'absolute';
+errorTooltip.style.color = 'red';
+loginDivElement.appendChild(errorTooltip);
+
+
 document.querySelector('.login').addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -38,7 +47,9 @@ document.querySelector('.login').addEventListener('submit', async (e) => {
             changeLoginLogout();  
             
         } else {
-            console.error('connexion error');           
+            console.error('connexion error');
+            errorTooltip.textContent = 'Erreur de serveur / Login incorrect.';
+            errorTooltip.style.display = 'block';
         }    
     });
 

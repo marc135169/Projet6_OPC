@@ -100,6 +100,7 @@ function changeModalToAddWork(coreModalElement, categories) {
     backwardElement.style.display = 'block';
     backwardElement.addEventListener('click', () => {
         updateModalData();
+        backwardElement.style.display = 'none';
     });
 
     const divCoreAddElement = document.createElement('div');
